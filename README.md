@@ -1,4 +1,4 @@
-# Terraform GCP module - Organization Integration for Uptycs
+# Terraform Azure module - Organization Integration for Uptycs
 
 * This module provides the required azure resources to integrate a Azure Tenant with Uptycs.
 * It integrates multiple child subscriptions available under the Azure Tenant.

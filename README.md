@@ -1,6 +1,6 @@
 # Terraform Azure module - Organization Integration for Uptycs
 
-* This module provides the required azure resources to integrate a Azure Tenant with Uptycs.
+* This module provides the required azure resources to integrate an Azure Tenant with Uptycs.
 * It integrates multiple child subscriptions available under the Azure Tenant.
 * It creates the following resources:-
   * Application
@@ -22,9 +22,9 @@
 
 ## Prerequisites
 
-Ensure you have the following before you execute the Terraform Script:
+Ensure that you have the following privileges, before you execute the Terraform Script:
 
-* The following privileges to apply the configuration :
+* The following privileges are required:
   * User Access Administrator Role to the Root
   * Administrative roles :
     * Application administrator

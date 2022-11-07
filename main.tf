@@ -44,7 +44,7 @@ resource "azuread_app_role_assignment" "OrganizationReadAll" {
 resource "azuread_application_password" "password_generation" {
   application_object_id = azuread_application.application.object_id
   end_date_relative     = "86400h"
-  display_name          = "cloudquery"
+  display_name          = var.resource_name
 }
 
 resource "azurerm_role_assignment" "Attach_Readerrole" {

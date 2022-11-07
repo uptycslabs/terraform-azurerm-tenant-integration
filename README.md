@@ -50,7 +50,7 @@ To execute the Terraform script:
 
    ```
    module "azure-org-config" {
-       source = "github.com/uptycslabs/terraform-azurerm-ad-org-integration"
+       source = "github.com/uptycslabs/terraform-azurerm-tenant-integration"
 
        # modify as per your requirement
        resource_name = "uptycs-cloudquery-integration-123"

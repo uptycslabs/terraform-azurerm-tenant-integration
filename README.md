@@ -52,11 +52,11 @@ To execute the Terraform script:
    module "azure-org-config" {
        source = "github.com/uptycslabs/terraform-azurerm-ad-org-integration"
 
-       # modify as you need
+       # modify as per your requirement
        resource_name = "uptycs-cloudquery-integration-123"
 
-       # Set this to true If you want to give permission at organization level
-       # Set this to false otherwise (If you want to give permissions per child subscription)
+       # Set this to true if you want to give permission at organization level
+       # Set this to false if you want to give permissions per child subscription
 
        set_org_level_permissions = false
 

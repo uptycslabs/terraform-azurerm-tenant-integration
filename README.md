@@ -1,4 +1,4 @@
-# Terraform Azure module - Organization Integration for Uptycs
+# Terraform Azure module - Tenant Integration for Uptycs
 
 This module provides the required Azure resources to integrate an Azure Tenant with Uptycs.
 
@@ -53,12 +53,12 @@ To execute the Terraform script:
        source = "github.com/uptycslabs/terraform-azurerm-tenant-integration"
 
        # modify as per your requirement
-       resource_name = "uptycs-cloudquery-integration-123"
+       resource_name = "UptycsIntegration-123"
 
        # Set this to true if you want to give permission at organization level for auto-integration of new accounts
        # Set this to false if you want to give permissions per child subscription
 
-       set_org_level_permissions = false
+       set_tenant_level_permissions = true
 
        parent_management_group_name = "<ID of the parent management group in a tenant>"
    }
@@ -74,8 +74,8 @@ To execute the Terraform script:
 
    | Name                         | Description                                                          | Type     | Default                             |
    | ---------------------------- | -------------------------------------------------------------------- | -------- | ----------------------------------- |
-   | resource_name                | The names of the new resources                                       | `string` | `uptycs-cloudquery-integration-123` |
-   | set_org_level_permissions    | The flag to choose permissions at tenant level or subscription level | `bool`   | `true`                              |
+   | resource_name                | The names of the new resources                                       | `string` | `UptycsIntegration-123` |
+   | set_tenant_level_permissions    | The flag to choose permissions at tenant level or subscription level | `bool`   | `true`                              |
    | parent_management_group_name | The ID of the root management group                                  | `string` | Required                            |
 
    ### Outputs

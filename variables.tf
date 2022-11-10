@@ -1,9 +1,9 @@
 variable "resource_name" {
   description = "Used to naming the new resources"
   type        = string
-  default     = "uptycs-cloudquery-integration"
+  default     = "UptycsIntegration-123"
 }
-variable "set_org_level_permissions" {
+variable "set_tenant_level_permissions" {
   description = "The flag to choose permissions to be attached to the application at tenant level or subscription level"
   type        = bool
   default     = true

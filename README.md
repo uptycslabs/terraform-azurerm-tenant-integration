@@ -18,6 +18,8 @@ It creates the following resources:
   **API permissions**:
   - Directory.Read.All
   - Organization.Read.All
+  - User.Read.All
+  - Group.Read.All
   
   **Policies**:
   - Key Vault Access Policy (secret_permissions : List)
@@ -37,7 +39,7 @@ Ensure you have the following privileges before you execute the Terraform Script
 To authenticate Azure tenant, use the following command:
 
 ```
-$ az login --tenant <tenant id>
+$ az login --tenant "tenant id"
 ```
 
 ## Terraform Script
@@ -60,7 +62,7 @@ To execute the Terraform script:
 
        set_tenant_level_permissions = true
 
-       parent_management_group_name = "<ID of the parent management group in a tenant>"
+       parent_management_group_name = "ID of the parent management group in a tenant"
    }
 
    output "tenant_id" {

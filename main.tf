@@ -24,6 +24,16 @@ resource "azuread_application" "application" {
       id   = azuread_service_principal.msgraph.app_role_ids["Organization.Read.All"]
       type = "Role"
     }
+    resource_access {
+      id   = azuread_service_principal.msgraph.app_role_ids["Group.Read.All"]
+      type = "Role"
+    }
+
+    resource_access {
+      id   = azuread_service_principal.msgraph.app_role_ids["User.Read.All"]
+      type = "Role"
+    }
+
   }
 
   required_resource_access {
@@ -42,6 +52,18 @@ resource "azuread_service_principal" "service_principal" {
 
 resource "azuread_app_role_assignment" "DirectoryReadAll" {
   app_role_id         = azuread_service_principal.msgraph.app_role_ids["Directory.Read.All"]
+  principal_object_id = azuread_service_principal.service_principal.object_id
+  resource_object_id  = azuread_service_principal.msgraph.object_id
+}
+
+resource "azuread_app_role_assignment" "UserReadAll" {
+  app_role_id         = azuread_service_principal.msgraph.app_role_ids["User.Read.All"]
+  principal_object_id = azuread_service_principal.service_principal.object_id
+  resource_object_id  = azuread_service_principal.msgraph.object_id
+}
+
+resource "azuread_app_role_assignment" "GroupReadAll" {
+  app_role_id         = azuread_service_principal.msgraph.app_role_ids["Group.Read.All"]
   principal_object_id = azuread_service_principal.service_principal.object_id
   resource_object_id  = azuread_service_principal.msgraph.object_id
 }

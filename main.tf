@@ -6,10 +6,6 @@ resource "azuread_service_principal" "msgraph" {
   use_existing   = true
 }
 
-resource "azuread_service_principal" "azActiveDirectory" {
-  application_id = data.azuread_application_published_app_ids.app_ids.result.AzureActiveDirectoryGraph
-  use_existing   = true
-}
 
 resource "azuread_application" "application" {
   display_name = var.resource_name
@@ -36,13 +32,6 @@ resource "azuread_application" "application" {
 
   }
 
-  required_resource_access {
-    resource_app_id = data.azuread_application_published_app_ids.app_ids.result.AzureActiveDirectoryGraph
-  resource_access {
-      id   = azuread_service_principal.azActiveDirectory.app_role_ids["Directory.Read.All"]
-      type = "Role"
-    }
-  }
 }
 
 resource "azuread_service_principal" "service_principal" {
@@ -68,11 +57,6 @@ resource "azuread_app_role_assignment" "GroupReadAll" {
   resource_object_id  = azuread_service_principal.msgraph.object_id
 }
 
-resource "azuread_app_role_assignment" "AzDirectoryReadAll" {
-  app_role_id         = azuread_service_principal.azActiveDirectory.app_role_ids["Directory.Read.All"]
-  principal_object_id = azuread_service_principal.service_principal.object_id
-  resource_object_id  = azuread_service_principal.azActiveDirectory.object_id
-}
 
 resource "azuread_app_role_assignment" "OrganizationReadAll" {
   app_role_id         = azuread_service_principal.msgraph.app_role_ids["Organization.Read.All"]

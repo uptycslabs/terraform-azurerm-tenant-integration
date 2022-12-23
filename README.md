@@ -20,6 +20,8 @@ It creates the following resources:
   - Organization.Read.All
   - User.Read.All
   - Group.Read.All
+  - OnPremisesPublishingProfiles.ReadWrite.All
+  - Application.Read.All
   
   **Policies**:
   - Key Vault Access Policy (secret_permissions : List)
@@ -30,8 +32,6 @@ Ensure you have the following privileges before you execute the Terraform Script
 
 * User Access Administrator Role to the Root
 * Administrative roles:
-  * Application administrator
-  * Directory readers
   * Global administrator
 
 ## Authentication
@@ -62,7 +62,7 @@ To execute the Terraform script:
 
        set_tenant_level_permissions = true
 
-       parent_management_group_name = "ID of the parent management group in a tenant"
+       parent_management_group_id = "ID of the parent management group in a tenant"
    }
 
    output "tenant_id" {
@@ -78,7 +78,7 @@ To execute the Terraform script:
    | ---------------------------- | -------------------------------------------------------------------- | -------- | ----------------------------------- |
    | resource_name                | The names of the new resources                                       | `string` | `UptycsIntegration-123` |
    | set_tenant_level_permissions    | The flag to choose permissions at tenant level or subscription level | `bool`   | `true`                              |
-   | parent_management_group_name | The ID of the root management group                                  | `string` | Required                            |
+   | parent_management_group_id | The ID of the root management group                                  | `string` | Required                            |
 
    ### Outputs
 

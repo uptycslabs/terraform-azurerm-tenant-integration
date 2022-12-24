@@ -29,10 +29,14 @@ It creates the following resources:
 ## Prerequisites
 
 Ensure you have the following privileges before you execute the Terraform Script:
-
-* User Access Administrator Role to the Root
 * Administrative roles:
   * Global administrator
+
+* User Access Administrator Role to the Root.
+
+    For more information visit: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin]
+
+
 
 ## Authentication
 

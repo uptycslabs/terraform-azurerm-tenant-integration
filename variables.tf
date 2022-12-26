@@ -8,7 +8,7 @@ variable "set_tenant_level_permissions" {
   type        = bool
   default     = true
 }
-variable "parent_management_group_id" {
+variable "root_management_group_id" {
   description = "ID of the Root Management Group"
   type        = string
 }

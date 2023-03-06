@@ -32,7 +32,7 @@ Ensure you have the following privileges before you execute the Terraform Script
 * Administrative roles:
   * Global administrator
 
-* User Access Administrator Role to the Root.
+* Owner Role to the Root.
 
     For more information visit: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin]
 
@@ -67,6 +67,9 @@ To execute the Terraform script:
        set_tenant_level_permissions = true
 
        root_management_group_id = "ID of the root management group in a tenant"
+
+       # Find the client_id on Azure Integration page of Uptycs Web
+       uptycs_app_client_id = "Client ID from Azure Integration page"
    }
 
    output "tenant_id" {
@@ -83,6 +86,7 @@ To execute the Terraform script:
    | resource_name                | The names of the new resources                                       | `string` | `UptycsIntegration-123` |
    | set_tenant_level_permissions    | The flag to choose permissions at tenant level or subscription level | `bool`   | `true`                              |
    | root_management_group_id | The ID of the root management group                                  | `string` | Required                            |
+   | uptycs_app_client_id | The Client ID of Uptycs multi-tenant app                                  | `string` | Required                            |
 
    ### Outputs
 
@@ -91,8 +95,8 @@ To execute the Terraform script:
    | tenantId | Tenant ID   |
 
    ```
-   $ terraform init
+   $ terraform init --upgrade
    $ terraform plan  # Please verify before applying
    $ terraform apply
-   # Once terraform successfully applied, it will create "credentials.json" file
+   # Wait until successfully completed
    ```

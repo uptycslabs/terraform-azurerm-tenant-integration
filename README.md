@@ -22,6 +22,7 @@ It creates the following resources:
   - Group.Read.All
   - OnPremisesPublishingProfiles.ReadWrite.All
   - Application.Read.All
+  - AuditLog.Read.All
   
   **Policies**:
   - Key Vault Access Policy (secret_permissions : List)

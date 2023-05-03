@@ -25,7 +25,7 @@ It creates the following resources:
   - AuditLog.Read.All
   
   **Policies**:
-  - Key Vault Access Policy (secret_permissions : List, certificate_permissions : List, Get)
+  - Key Vault Access Policy (certificate_permissions : List, Get)
 
 ## Prerequisites
 

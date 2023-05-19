@@ -58,7 +58,7 @@ To execute the Terraform script:
 
    ```
    module "azure-org-config" {
-       source = "github.com/uptycslabs/terraform-azurerm-tenant-integration"
+       source = "uptycslabs/tenant-integration/azurerm"
 
        # modify as per your requirement
        resource_name = "UptycsIntegration-123"

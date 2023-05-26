@@ -24,6 +24,7 @@ It creates the following resources:
   - OnPremisesPublishingProfiles.ReadWrite.All
   - Application.Read.All
   - AuditLog.Read.All
+  - Policy.Read.All
   
   **Policies**:
   - Key Vault Access Policy (certificate_permissions : List, Get)

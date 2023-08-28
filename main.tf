@@ -50,8 +50,8 @@ resource "azuread_app_role_assignment" "on_premises_publishing_profiles_reader_r
   resource_object_id  = azuread_service_principal.msgraph.object_id
 }
 
-resource "azuread_app_role_assignment" "audit_log_reader_role" {
-  app_role_id         = azuread_service_principal.msgraph.app_role_ids["AuditLog.Read.All"]
+resource "azuread_app_role_assignment" "user_authentication_methods_reader_role" {
+  app_role_id         = azuread_service_principal.msgraph.app_role_ids["UserAuthenticationMethod.Read.All"]
   principal_object_id = azuread_service_principal.service_principal.object_id
   resource_object_id  = azuread_service_principal.msgraph.object_id
 }

@@ -4,42 +4,45 @@ This module provides the required Azure resources to integrate an Azure Tenant w
 
 It integrates multiple child subscriptions available under the Azure Tenant.
 
-It creates the following resources:
-* Application
-* Service principal to the application
-* It attaches the following roles and permissions to the service principal:
-  
-  **Roles**:
-  - Reader
-  - Key Vault Reader
-  - Storage Blob Data Reader
-  - Storage Account Key Operator Service Role
-  - Custom read-only access for required resources
-  
-  **API permissions**:
-  - Directory.Read.All
-  - Organization.Read.All
-  - User.Read.All
-  - Group.Read.All
-  - OnPremisesPublishingProfiles.ReadWrite.All
-  - Application.Read.All
-  - UserAuthenticationMethod.Read.All
-  - Policy.Read.All
-  
-  **Policies**:
-  - Key Vault Access Policy (certificate_permissions : List, Get)
-
-## Prerequisites
+## Prerequisites [Do Not Skip]
 
 Ensure you have the following privileges before you execute the Terraform Script:
-* Administrative roles:
-  * Global administrator
 
-* Owner Role to the Root.
+- Administrative roles:
+  - Privileged Role Administrator
+  - Application Administrator
+- Owner Role to the Root.
 
-    For more information visit: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin]
+  For more information visit: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin]
 
+Absence of the above privileges will result in Access related issues when trying to run the Terraform.
 
+## What does the Terraform do?
+
+Terraform is going to create a new **Service Principal** corresponding to our Multi-Tenant App Registration and assign below Roles/Permissions/Policies to it. Uptycs requires these set of Roles/Permissions to be able to fetch the required information from your Tenant:
+
+**Roles**:
+
+- Reader
+- Key Vault Reader
+- Storage Blob Data Reader
+- Storage Account Key Operator Service Role
+- Custom read-only access for required resources
+
+**API permissions**:
+
+- Directory.Read.All
+- Organization.Read.All
+- User.Read.All
+- Group.Read.All
+- OnPremisesPublishingProfiles.ReadWrite.All
+- Application.Read.All
+- UserAuthenticationMethod.Read.All
+- Policy.Read.All
+
+**Policies**:
+
+- Key Vault Access Policy (certificate_permissions : List, Get)
 
 ## Authentication
 
@@ -84,12 +87,12 @@ To execute the Terraform script:
 
    **Inputs**
 
-   | Name                         | Description                                                          | Type     | Default                             |
-   | ---------------------------- | -------------------------------------------------------------------- | -------- | ----------------------------------- |
+   | Name                         | Description                                                          | Type     | Default                 |
+   | ---------------------------- | -------------------------------------------------------------------- | -------- | ----------------------- |
    | resource_name                | The names of the new resources                                       | `string` | `UptycsIntegration-123` |
-   | set_tenant_level_permissions    | The flag to choose permissions at tenant level or subscription level | `bool`   | `true`                              |
-   | root_management_group_id | The ID of the root management group                                  | `string` | Required                            |
-   | uptycs_app_client_id | The Client ID of Uptycs multi-tenant app                                  | `string` | Required                            |
+   | set_tenant_level_permissions | The flag to choose permissions at tenant level or subscription level | `bool`   | `true`                  |
+   | root_management_group_id     | The ID of the root management group                                  | `string` | Required                |
+   | uptycs_app_client_id         | The Client ID of Uptycs multi-tenant app                             | `string` | Required                |
 
    ### Outputs
 

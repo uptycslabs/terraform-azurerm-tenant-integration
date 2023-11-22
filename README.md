@@ -56,7 +56,7 @@ $ az login --tenant "tenant id"
 
 To execute the Terraform script:
 
-### 1. Prepare .tf file
+### Step-1: Prepare .tf file
 
 Create a `main.tf` file in a new folder. Copy and paste the following configuration and modify as required:
 
@@ -83,7 +83,7 @@ output "tenant_id" {
 }
 ```
 
-### 2. Init, Plan and Apply
+### Step-2: Terraform Init, Plan and Apply
 
 **Inputs**
 
@@ -103,7 +103,7 @@ $ terraform apply
 # Wait until successfully completed
 ```
 
-### 3. Outputs
+### Step-3: Outputs
 
 After running the Terraform, the following outputs are generated, which you need to add in the Uptycs Integration Page:
 

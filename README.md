@@ -15,11 +15,11 @@ Ensure you have the following privileges before you execute the Terraform Script
 
   For more information visit: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin]
 
-Absence of the above privileges will result in Access related issues when trying to run the Terraform.
+Absence of the above privileges may result in Access related issues when trying to run the Terraform.
 
 ## What does the Terraform do?
 
-Terraform is going to create a new <u>**Service Principal**</u> corresponding to our Multi-Tenant App Registration and assign below Roles/Permissions/Policies to it. Uptycs requires these set of Roles/Permissions to be able to fetch the required information from your Tenant:
+Terraform is going to create a new **Service Principal** corresponding to our Multi-Tenant App Registration and assign below Roles/Permissions/Policies to it at the scope of the Root Management Group. Uptycs requires these set of Roles/Permissions to be able to fetch the required information from your Tenant:
 
 **Roles**:
 
@@ -40,7 +40,7 @@ Terraform is going to create a new <u>**Service Principal**</u> corresponding to
 - UserAuthenticationMethod.Read.All
 - Policy.Read.All
 
-**Policies**:
+**Policy**:
 
 - Key Vault Access Policy (certificate_permissions : List, Get)
 
@@ -94,6 +94,8 @@ output "tenant_id" {
 | root_management_group_id     | The ID of the root management group                                  | `string` | Required                |
 | uptycs_app_client_id         | The Client ID of Uptycs multi-tenant app                             | `string` | Required                |
 
+Execute the below commands in your terminal:
+
 ```
 $ terraform init --upgrade
 $ terraform plan  # Please verify before applying
@@ -101,7 +103,9 @@ $ terraform apply
 # Wait until successfully completed
 ```
 
-### 3.Outputs
+### 3. Outputs
+
+After running the Terraform, the following outputs are generated, which you need to add in the Uptycs Integration Page:
 
 | Name     | Description |
 | -------- | ----------- |

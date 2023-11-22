@@ -13,13 +13,13 @@ Ensure you have the following privileges before you execute the Terraform Script
   - `Application Administrator` (AD Role)
 - `Owner` role at the Root Management Group scope
 
-  For more information visit: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin]
+  For more information, refer to: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin].
 
-Absence of the above privileges may result in Access related issues when trying to run the Terraform.
+Absence of the above privileges may result in access related issues when trying to run the Terraform.
 
 ## What does the Terraform do?
 
-Terraform is going to create a new **Service Principal** corresponding to our Multi-Tenant App Registration and assign below Roles/Permissions/Policies to it at the scope of the Root Management Group. Uptycs requires these set of Roles/Permissions to be able to fetch the required information from your Tenant:
+Running the Terraform creates a new **Service Principal** corresponding to Uptycs's Multi-Tenant App Registration. It assigns below Roles/Permissions/Policies to it at the scope of the Root Management Group. Uptycs requires these set of Roles/Permissions to be able to fetch the required information from your Tenant:
 
 **Roles**:
 
@@ -83,9 +83,7 @@ output "tenant_id" {
 }
 ```
 
-### Step-2: Terraform Init, Plan and Apply
-
-**Inputs**
+Specify the following parameters in the Terraform file:
 
 | Name                         | Description                                                          | Type     | Default                 |
 | ---------------------------- | -------------------------------------------------------------------- | -------- | ----------------------- |
@@ -93,6 +91,8 @@ output "tenant_id" {
 | set_tenant_level_permissions | The flag to choose permissions at tenant level or subscription level | `bool`   | `true`                  |
 | root_management_group_id     | The ID of the root management group                                  | `string` | Required                |
 | uptycs_app_client_id         | The Client ID of Uptycs multi-tenant app                             | `string` | Required                |
+
+### Step-2: Terraform Init, Plan and Apply
 
 Execute the below commands in your terminal:
 

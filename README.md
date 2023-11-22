@@ -11,7 +11,7 @@ Ensure you have the following privileges before you execute the Terraform Script
 - Administrative roles:
   - Privileged Role Administrator
   - Application Administrator
-- Owner Role to the Root.
+- Owner Role at the Root Management Group.
 
   For more information visit: [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin]
 

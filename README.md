@@ -13,7 +13,7 @@ Ensure you have the following privileges before you execute the Terraform Script
   - `Application Administrator` (AD Role)
 - `Owner` role at the Root Management Group scope
 
-  For more information, refer to [https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin].
+  For more information on how to enable Access Control (IAM) for Root Management Group, refer to [this link](https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin).
 
 Absence of the above privileges may result in access related issues when trying to run the Terraform.
 

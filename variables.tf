@@ -15,5 +15,5 @@ variable "root_management_group_id" {
 
 variable "uptycs_app_client_id" {
   description = "Client ID of Uptycs Multitenant App"
-  type = string
+  type        = string
 }

@@ -4,13 +4,13 @@ locals {
 
 # Get MSGraph App
 resource "azuread_service_principal" "msgraph" {
-  application_id = data.azuread_application_published_app_ids.well_known.result.MicrosoftGraph
-  use_existing   = true
+  client_id    = data.azuread_application_published_app_ids.well_known.result.MicrosoftGraph
+  use_existing = true
 }
 
 # Create a service principal for the Uptycs App 
 resource "azuread_service_principal" "service_principal" {
-  application_id = var.uptycs_app_client_id
+  client_id = var.uptycs_app_client_id
 }
 
 # Create Graph API related permissions to the service principal

@@ -76,6 +76,14 @@ resource "azurerm_role_assignment" "storage_blob_data_reader_role" {
   role_definition_name = "Storage Blob Data Reader"
 }
 
+# Give the service principal a Azure Event Hubs Data Receiver role in the Subscription
+resource "azurerm_role_assignment" "azure_event_hubs_data_receiver_role" {
+  count                = var.set_tenant_level_permissions == true ? 1 : 0
+  principal_id         = azuread_service_principal.service_principal.id
+  scope                = data.azurerm_management_group.parent_management_group.id
+  role_definition_name = "Azure Event Hubs Data Receiver"
+}
+
 resource "azurerm_role_assignment" "Attach_Key_Vault_Readerrole" {
   count                = var.set_tenant_level_permissions == true ? 1 : 0
   scope                = data.azurerm_management_group.parent_management_group.id
@@ -118,6 +126,13 @@ resource "azurerm_role_assignment" "storage_blob_data_reader_role_to_subscriptio
   principal_id         = azuread_service_principal.service_principal.id
   scope                = each.key
   role_definition_name = "Storage Blob Data Reader"
+}
+
+resource "azurerm_role_assignment" "azure_event_hubs_data_receiver_role_to_subscriptions" {
+  for_each             = var.set_tenant_level_permissions == true ? [] : local.all_subscription_ids
+  principal_id         = azuread_service_principal.service_principal.id
+  scope                = each.key
+  role_definition_name = "Azure Event Hubs Data Receiver"
 }
 
 resource "azurerm_role_assignment" "Attach_Key_Vault_Readerrole_to_subscriptions" {

@@ -91,13 +91,6 @@ resource "azurerm_role_assignment" "Attach_Key_Vault_Readerrole" {
   principal_id         = azuread_service_principal.service_principal.id
 }
 
-resource "azurerm_role_assignment" "Attach_StorageAccountKeyOperatorServicerole" {
-  count                = var.set_tenant_level_permissions == true ? 1 : 0
-  scope                = data.azurerm_management_group.parent_management_group.id
-  role_definition_name = "Storage Account Key Operator Service Role"
-  principal_id         = azuread_service_principal.service_principal.id
-}
-
 resource "azurerm_role_definition" "Define_App_Service_Auth_Reader" {
   name        = "${var.resource_name}-AppServiceAuthReader"
   scope       = data.azurerm_management_group.parent_management_group.id
@@ -141,14 +134,6 @@ resource "azurerm_role_assignment" "Attach_Key_Vault_Readerrole_to_subscriptions
   role_definition_name = "Key Vault Reader"
   principal_id         = azuread_service_principal.service_principal.id
 }
-
-resource "azurerm_role_assignment" "Attach_StorageAccountKeyOperatorServicerole_to_subscriptions" {
-  for_each             = var.set_tenant_level_permissions == true ? [] : local.all_subscription_ids
-  scope                = each.key
-  role_definition_name = "Storage Account Key Operator Service Role"
-  principal_id         = azuread_service_principal.service_principal.id
-}
-
 
 resource "azurerm_role_assignment" "Attach_App_Service_Auth_Reader_to_subscriptions" {
   for_each           = var.set_tenant_level_permissions == true ? [] : local.all_subscription_ids
